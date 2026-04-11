@@ -1,36 +1,53 @@
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Camera } from 'lucide-react';
+import { storage } from '../utils/storage';
 
 export const Scan = () => {
-  const [isScanning, setIsScanning] = useState(false);
+  const [scanResult, setScanResult] = useState<string | null>(null);
 
-  const handleScan = async () => {
-    setIsScanning(true);
-    // 1. カメラ起動
-    // 2. OCR処理で商品番号抽出
-    // 3. APIで画像取得
-    setIsScanning(false);
+  // カメラでスキャンした時の疑似処理
+  const onScanSuccess = (code: string) => {
+    // 例: UNIQLOの番号形式 (6桁) ならTシャツテンプレートを割り当て
+    const isUniqlo = /^\d{6}$/.test(code);
+    
+    const newItem = {
+      id: `item-${Date.now()}`,
+      brand: isUniqlo ? 'UNIQLO' : 'ZARA',
+      productNumber: code,
+      imageUrl: `/images/placeholder-${isUniqlo ? 'tshirt' : 'pants'}.png`, // 仮の画像
+      category: isUniqlo ? 'Tops' : 'Bottoms',
+      templateModel: isUniqlo ? 't_shirt_base' : 'pants_base', // ここが重要！
+      attributes: { tempMin: 15, tempMax: 25, humidityResistant: false }
+    };
+
+    storage.saveItem(newItem);
+    setScanResult(code);
   };
 
   return (
-    <div className="flex flex-col items-center p-6 space-y-6">
-      <div className="relative w-full aspect-square border-4 border-dashed border-pink-400 rounded-2xl flex items-center justify-center bg-white/50">
-        <div className="absolute inset-0 bg-pink-500/10 animate-pulse" />
-        <Camera size={64} className="text-pink-400" />
-      </div>
-      
-      <div className="text-center">
-        <h2 className="text-2xl font-bold text-purple-700">Tag Scan</h2>
-        <p className="text-sm text-gray-500">ブランドタグの番号を写してね！</p>
+    <div className="p-6 flex flex-col items-center justify-center h-full space-y-8 bg-pink-50">
+      <div className="w-64 h-64 border-4 border-brand-pink rounded-3xl relative overflow-hidden bg-black">
+        {/* ここにカメラプレビューが表示される */}
+        <div className="scan-line" /> 
+        <div className="absolute inset-0 flex items-center justify-center text-white opacity-50 text-xs">
+          Align tag number here
+        </div>
       </div>
 
-      <Button 
-        onClick={handleScan}
-        className="w-full h-16 bg-gradient-to-r from-pink-400 to-purple-500 rounded-full text-xl font-bold shadow-lg"
-      >
-        {isScanning ? "Scanning..." : "SCAN!"}
+      <div className="text-center space-y-2">
+        <h2 className="text-2xl font-black text-brand-purple">CARD GENERATOR</h2>
+        <p className="text-xs font-bold text-gray-400">タグの番号を読み取ってカードを作ろう！</p>
+      </div>
+
+      <Button onClick={() => onScanSuccess("464850")} className="btn-magic w-full h-16 text-xl">
+        SCAN START!
       </Button>
+
+      {scanResult && (
+        <div className="animate-in fade-in zoom-in glass-card p-4 text-center">
+          <p className="text-brand-pink font-bold">UNIQLO 商品番号 {scanResult} を登録したよ！</p>
+        </div>
+      )}
     </div>
   );
 };
