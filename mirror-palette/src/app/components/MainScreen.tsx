@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls, useGLTF, Environment } from '@react-three/drei'
+import { useDrag } from '@use-gesture/react'
 
 // アバターと服を表示するコンポーネント
 function AvatarModel({ clothesPath }) {
@@ -10,6 +11,18 @@ function AvatarModel({ clothesPath }) {
 }
 
 export default function MainScreen() {
+  // 1. 状態管理の定義
+  const [index, setIndex] = useState(0);
+  const clothesList = ["/models/2_compressed.glb", "/models/shirt.glb", "/models/hoodie.glb"];
+
+  // 2. スワイプイベントの定義
+  const bind = useDrag(({ swipe: [swipeX] }) => {
+    if (swipeX === -1) { // 左スワイプで次の服
+      setIndex((prev) => (prev + 1) % clothesList.length);
+    } else if (swipeX === 1) { // 右スワイプで前の服
+      setIndex((prev) => (prev - 1 + clothesList.length) % clothesList.length);
+    }
+  });
   return (
     <div style={{ width: '100vw', height: '80vh', position: 'relative' }}>
       <Canvas camera={{ position: [0, 0, 5], fov: 50 }}>
