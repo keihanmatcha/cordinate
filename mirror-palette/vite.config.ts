@@ -10,5 +10,6 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
-  assetsInclude: ['**/*.svg', '**/*.csv'],
+  // 3Dモデルファイルをアセットとして明示的に含める
+  assetsInclude: ['**/*.svg', '**/*.csv', '**/*.glb', '**/*.gltf'],
 })
