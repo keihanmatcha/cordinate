@@ -5,7 +5,8 @@
 
 /* もし独自の色を使いたい場合は、ここで定義します */
 @theme {
-  --color-brand-pink: #ff69b4; /* ここで定義すれば from-brand-pink が使えるようになります */
+  --color-brand-pink: #ff69b4;   /* from-brand-pink 用 */
+  --color-brand-purple: #9333ea; /* to-brand-purple 用 */
 }
 * {
   -webkit-tap-highlight-color: transparent; /* モバイルのタップ青枠を消す */
