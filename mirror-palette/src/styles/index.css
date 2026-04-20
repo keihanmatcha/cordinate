@@ -1,7 +1,7 @@
+@import "tailwindcss";
 @import './fonts.css';
 @import './theme.css';
 @import './tailwind.css';
-@import "tailwindcss";
 
 /* もし独自の色を使いたい場合は、ここで定義します */
 @theme {
