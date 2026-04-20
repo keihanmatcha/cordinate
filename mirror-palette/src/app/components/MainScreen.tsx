@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react'
+import React, { useState, Suspense } from 'react' // useStateを追加
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls, useGLTF, Environment } from '@react-three/drei'
 import { useDrag } from '@use-gesture/react'
@@ -24,7 +24,11 @@ export default function MainScreen() {
     }
   });
   return (
-    <div style={{ width: '100vw', height: '80vh', position: 'relative' }}>
+     <div {...bind()} style={{ width: '100vw', height: '100vh', position: 'relative', touchAction: 'none' }}>
+       <div style={{ position: 'absolute', top: 20, right: 20, zIndex: 10, textAlign: 'right' }}>
+        <p>Region</p>
+        <p style={{ fontSize: '2rem' }}>Temperature°C</p>
+      </div>
       <Canvas camera={{ position: [0, 0, 5], fov: 50 }}>
         {/* 明るい照明設定 */}
         <ambientLight intensity={0.5} />
