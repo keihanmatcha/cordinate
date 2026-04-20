@@ -1,7 +1,12 @@
 @import './fonts.css';
 @import './theme.css';
 @import './tailwind.css';
+@import "tailwindcss";
 
+/* もし独自の色を使いたい場合は、ここで定義します */
+@theme {
+  --color-brand-pink: #ff69b4; /* ここで定義すれば from-brand-pink が使えるようになります */
+}
 * {
   -webkit-tap-highlight-color: transparent; /* モバイルのタップ青枠を消す */
   user-select: none; /* ゲーム感を出すためテキスト選択を禁止 */
