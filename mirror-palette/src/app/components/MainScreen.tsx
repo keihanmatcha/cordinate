@@ -13,7 +13,7 @@ function AvatarModel({ clothesPath }) {
 export default function MainScreen() {
   // 1. 状態管理の定義
   const [index, setIndex] = useState(0);
-  const clothesList = ["/models/2_compressed.glb", "/models/shirt.glb", "/models/hoodie.glb"];
+  const clothesList = ["/models/current_tops.glb", "/models/shirt.glb", "/models/hoodie.glb"];
 
   // 2. スワイプイベントの定義
   const bind = useDrag(({ swipe: [swipeX] }) => {
