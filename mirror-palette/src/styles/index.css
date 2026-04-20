@@ -3,10 +3,17 @@
 @import './theme.css';
 @import './tailwind.css';
 
-/* もし独自の色を使いたい場合は、ここで定義します */
 @theme {
-  --color-brand-pink: #ff69b4;   /* from-brand-pink 用 */
-  --color-brand-purple: #9333ea; /* to-brand-purple 用 */
+  /* theme.css で定義した :root 変数を Tailwind のクラス名に紐付ける */
+  --color-brand-pink: var(--brand-pink);
+  --color-brand-pink-light: var(--brand-pink-light);
+  --color-brand-purple: var(--brand-purple);
+  --color-brand-purple-dark: var(--brand-purple-dark);
+  
+  /* その他、エラーが出る可能性のあるものも同様に紐付け */
+  --color-weather-sunny: var(--weather-sunny);
+  --color-weather-rainy: var(--weather-rainy);
+  --shadow-magic: var(--magic-shadow);
 }
 * {
   -webkit-tap-highlight-color: transparent; /* モバイルのタップ青枠を消す */
