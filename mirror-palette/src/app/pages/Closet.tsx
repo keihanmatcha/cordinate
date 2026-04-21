@@ -14,11 +14,11 @@ const Closet = () => {
 
   // 1. アイテムリスト
   const items = [
-    { id: 1, name: "カジュアルTシャツ", path: "/models/current_tops.glb", category: "casual" },
-    { id: 2, name: "勝負服（パーティー）", path: "/models/onepiece.glb", category: "party" },
-    { id: 3, name: "ビジネスシャツ", path: "/models/current_tops.glb", category: "formal" },
-    { id: 4, name: "トレーニングウェア", path: "/models/current_tops.glb", category: "sport" },
-    { id: 5, name: "カーゴパンツ", path: "/models/cargopants.glb", category: "casual" },
+    { id: 1, name: "カジュアルTシャツ", path: "models/current_tops.glb", category: "casual" },
+    { id: 2, name: "勝負服（パーティー）", path: "models/onepiece.glb", category: "party" },
+    { id: 3, name: "ビジネスシャツ", path: "models/current_tops.glb", category: "formal" },
+    { id: 4, name: "トレーニングウェア", path: "models/current_tops.glb", category: "sport" },
+    { id: 5, name: "カーゴパンツ", path: "models/cargopants.glb", category: "casual" },
   ];
 
   // 2. カテゴリカラー設定
