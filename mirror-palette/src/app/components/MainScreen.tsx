@@ -108,7 +108,7 @@ export default function MainScreen() {
         <ambientLight intensity={2.0} />
         <pointLight position={[5, 5, 5]} intensity={1.5} />
         <Suspense fallback={null}>
-          <Model path="/models/base_avatar.glb" />
+          <Model path="models/base_avatar.glb" />
           <Model path={topsList[topIndex]} />
           <Model path={underList[underIndex]} />
           <Environment preset="city" />
