@@ -15,8 +15,8 @@ export default function MainScreen() {
   const [searchQuery, setSearchQuery] = useState("");
 
   // --- モデルリスト ---
-  const topsList = ["/models/onepiece.glb", "/models/current_tops.glb", "/models/shirt.glb", "/models/hoodie.glb"];
-  const underList = ["/models/cargopants.glb", "/models/pants.glb"]; // パンツ等のファイル名に合わせて変更してください
+  const topsList = ["models/onepiece.glb", "models/current_tops.glb", "models/shirt.glb", "models/hoodie.glb"];
+  const underList = ["models/cargopants.glb", "models/pants.glb"]; // パンツ等のファイル名に合わせて変更してください
 
   // --- 天気API連携 ---
   const fetchWeather = async (targetCity: string) => {
