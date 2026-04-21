@@ -32,8 +32,8 @@ const Register = () => {
       id: nextId,
       // 形状(subCategory)に応じてモデルのパスを自動決定する
       modelPath: formData.category === 'tops' 
-        ? `/models/${formData.subCategory}.glb` 
-        : `/models/${formData.subCategory}.glb`
+        ? `models/${formData.subCategory}.glb` 
+        : `models/${formData.subCategory}.glb`
     };
 
     // 3. LocalStorageへ保存
