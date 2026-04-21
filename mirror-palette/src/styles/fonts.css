@@ -1,0 +1,17 @@
+/* Google Fontsなどから可愛いフォントを読み込む例 */
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;900&family=Zen+Maru+Gothic:wght@400;700&display=swap');
+
+:root {
+  --font-main: 'Zen Maru Gothic', sans-serif;
+  --font-game: 'M PLUS Rounded 1c', sans-serif;
+}
+
+h1, h2, .game-button {
+  font-family: var(--font-game);
+  font-weight: 900;
+  letter-spacing: 0.05em;
+}
+
+body {
+  font-family: var(--font-main);
+}
